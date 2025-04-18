@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snake Game</title>
   <style>
-    body {
+    .main-body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e1e;
       color: #ffffff;
@@ -16,6 +16,10 @@
       height: 100vh;
       margin: 0;
     }
+    body {
+        margin: 0;
+        padding: 0;
+    }
     h1 {
       margin-bottom: 20px;
     }
@@ -23,81 +27,124 @@
       background-color: #111;
       border: 2px solid #44ff44;
     }
+    .header {
+        background-color: navy;
+        margin: 0;
+        padding: 0;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Courier New', Courier, monospace;
+        flex-direction: column;
+    }
+
+    .header h2 {
+        margin: 0;
+        color: white;
+    }
+
+    .header-nav {
+        margin-top: 5px;
+    }
+    a {
+        color: white;
+    }
   </style>
 </head>
-<body>
-  <h1>Snake Game</h1>
-  <canvas id="gameCanvas" width="400" height="400"></canvas>
-  <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+    <body>
+        <div class="header">
+            <h2>Olympics</h2>
+            <nav class="header-nav">
+                <a href="../index.html">HOME</a>
+                <a href="webapp.html">GAME</a>
+                <a href="#">OLYMPICS</a>
+            </nav>
+        </div>
+        <div class="main-body">
+            <h1>Snake Game</h1>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <button onclick="restart()">Play Again</button>
+            <script>
+                const canvas = document.getElementById("gameCanvas");
+                const ctx = canvas.getContext("2d");
 
-    const gridSize = 20;
-    const tileCount = canvas.width / gridSize;
-    let snake = [{x: 10, y: 10}];
-    let velocity = {x: 0, y: 0};
-    let food = {x: 5, y: 5};
-    let gameOver = false;
+                const gridSize = 20;
+                const tileCount = canvas.width / gridSize;
+                let snake = [{x: 10, y: 10}];
+                let velocity = {x: 0, y: 0};
+                let food = {x: 5, y: 5};
+                let gameOver = false;
 
-    document.addEventListener("keydown", e => {
-      switch (e.key) {
-        case "ArrowUp": if (velocity.y === 0) velocity = {x: 0, y: -1}; break;
-        case "ArrowDown": if (velocity.y === 0) velocity = {x: 0, y: 1}; break;
-        case "ArrowLeft": if (velocity.x === 0) velocity = {x: -1, y: 0}; break;
-        case "ArrowRight": if (velocity.x === 0) velocity = {x: 1, y: 0}; break;
-      }
-    });
+                document.addEventListener("keydown", e => {
+                switch (e.key) {
+                    case "ArrowUp": if (velocity.y === 0) velocity = {x: 0, y: -1}; break;
+                    case "ArrowDown": if (velocity.y === 0) velocity = {x: 0, y: 1}; break;
+                    case "ArrowLeft": if (velocity.x === 0) velocity = {x: -1, y: 0}; break;
+                    case "ArrowRight": if (velocity.x === 0) velocity = {x: 1, y: 0}; break;
+                }
+                });
 
-    function drawTile(x, y, color) {
-      ctx.fillStyle = color;
-      ctx.fillRect(x * gridSize, y * gridSize, gridSize - 1, gridSize - 1);
-    }
+                function restart() {
+                    snake = [{x: 10, y: 10}];
+                    velocity = {x: 0, y: 0};
+                    food = {x: 5, y: 5};
+                    gameOver = false;
+                }
 
-    function gameLoop() {
-      if (gameOver) {
-        ctx.fillStyle = "#f00";
-        ctx.font = "20px Arial";
-        ctx.fillText("Game Over", canvas.width / 2 - 50, canvas.height / 2);
-        return;
-      }
+                function drawTile(x, y, color) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x * gridSize, y * gridSize, gridSize - 1, gridSize - 1);
+                }
 
-      requestAnimationFrame(gameLoop);
-      if (++frame % 8 !== 0) return; // control speed
+                function gameLoop() {
+                if (gameOver) {
+                    ctx.fillStyle = "#f00";
+                    ctx.font = "20px Arial";
+                    ctx.fillText("Game Over", canvas.width / 2 - 50, canvas.height / 2);
+                    return;
+                }
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+                //requestAnimationFrame(gameLoop);
+                if (++frame % 8 !== 0) return; // control speed
 
-      // Move snake
-      const head = {x: snake[0].x + velocity.x, y: snake[0].y + velocity.y};
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Game over conditions
-      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || 
-        (snake.some(s => s.x === head.x && s.y === head.y) && snake.length > 1)) {
-        gameOver = true;
-        console.log(head.y + tileCount);
-        return;
-      }
+                // Move snake
+                const head = {x: snake[0].x + velocity.x, y: snake[0].y + velocity.y};
 
-      snake.unshift(head);
+                // Game over conditions
+                if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || 
+                    (snake.some(s => s.x === head.x && s.y === head.y) && snake.length > 1)) {
+                    gameOver = true;
+                    console.log(head.y + tileCount);
+                    return;
+                }
 
-      // Check food
-      if (head.x === food.x && head.y === food.y) {
-        food = {
-          x: Math.floor(Math.random() * tileCount),
-          y: Math.floor(Math.random() * tileCount)
-        };
-      } else {
-        snake.pop();
-      }
+                snake.unshift(head);
 
-      // Draw snake
-      snake.forEach((part, index) => drawTile(part.x, part.y, index === 0 ? "#00ff00" : "#44ff44"));
+                // Check food
+                if (head.x === food.x && head.y === food.y) {
+                    food = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                    };
+                } else {
+                    snake.pop();
+                }
 
-      // Draw food
-      drawTile(food.x, food.y, "#ff4444");
-    }
+                // Draw snake
+                snake.forEach((part, index) => drawTile(part.x, part.y, index === 0 ? "#00ff00" : "#44ff44"));
 
-    let frame = 0;
-    gameLoop();
-  </script>
-</body>
+                // Draw food
+                drawTile(food.x, food.y, "#ff4444");
+                }
+
+                let frame = 0;
+                setInterval(gameLoop, 10);
+            </script>
+        </div>
+    </body>
 </html>
