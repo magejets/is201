@@ -3,48 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../css/scratch.css" />
     <title>Olympics</title>
 </head>
 <body>
-    <nav>
-        <a href="../index.html">HOME</a>
-        <a href="webapp.html">GAME</a>
-        <a href="#">OLYMPICS</a>
-    </nav>
+    <div class="header">
+        <h2>Olympics</h2>
+        <nav class="header-nav">
+            <a href="../index.html">HOME</a>
+            <a href="webapp.html">GAME</a>
+            <a href="#">OLYMPICS</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <h1 id="TOP">Info on the Olympics</h1>
 
-    <h1 id="TOP">Info on the Olympics</h1>
-
-    <img src="../assets/img/olympic-rings-eiffel-tower-wikimedia-cc-1500x844-1.jpg" width="400" alt="Olympic Rings at Eiffel Tower"/>
-    <h3>Track Gold Medals</h3>
-    <ul>
-        <li>
-            <p>100 Meters</p>
-            <ol>
-                <li>USA: 9</li>
-                <li>JAM: 4</li>
-                <li>AUS: 2</li>
-            </ol>
-        </li>
-        <li>
-            <p>400 Meters</p>
-            <ol>
-                <li>USA: 20</li>
-                <li>GBR: 2</li>
-                <li>JAM: 2</li>
-            </ol>
-        </li>
-        <li>
-            <p>5000 Meters</p>
-            <ol>
-                <li>FIN: 6</li>
-                <li>ETH: 3</li>
-                <li>GBR: 2</li>
-            </ol>
-        </li>
-    </ul>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/A6CwNLtHtTo?si=zF4ZANBcdABr_JKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <h3>Visualization of Medals</h3>
-    <div class='tableauPlaceholder' id='viz1744920142316' style='position: relative'><noscript><a href='#'><img alt='Olympic Games ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlympicGames-MedalRanking&#47;OlympicGames&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='OlympicGames-MedalRanking&#47;OlympicGames' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlympicGames-MedalRanking&#47;OlympicGames&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1744920142316');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='727px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='727px';} else { vizElement.style.width='100%';vizElement.style.height='1277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-    <a href="#TOP">Back to top</a>
+        <img src="../assets/img/olympic-rings-eiffel-tower-wikimedia-cc-1500x844-1.jpg" width="400" alt="Olympic Rings at Eiffel Tower"/>
+        <h3>Track Gold Medals</h3>
+        <ul class="center-list">
+            <li>
+                <p>100 Meters</p>
+                <ol>
+                    <li>USA: 9</li>
+                    <li>JAM: 4</li>
+                    <li>AUS: 2</li>
+                </ol>
+            </li>
+            <li>
+                <p>400 Meters</p>
+                <ol>
+                    <li>USA: 20</li>
+                    <li>GBR: 2</li>
+                    <li>JAM: 2</li>
+                </ol>
+            </li>
+            <li>
+                <p>5000 Meters</p>
+                <ol>
+                    <li>FIN: 6</li>
+                    <li>ETH: 3</li>
+                    <li>GBR: 2</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>The Great Kipchoge</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/A6CwNLtHtTo?si=zF4ZANBcdABr_JKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3>Visualization of Medals</h3>
+        <div class='tableauPlaceholder' id='viz1744920142316' style='position: relative'><noscript><a href='#'><img alt='Olympic Games ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlympicGames-MedalRanking&#47;OlympicGames&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='OlympicGames-MedalRanking&#47;OlympicGames' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlympicGames-MedalRanking&#47;OlympicGames&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1744920142316');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='727px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='727px';} else { vizElement.style.width='100%';vizElement.style.height='1277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+    <div class="footer">
+        <a href="#TOP">Back to top</a>
+    </div>
 </body>
 </html>
